@@ -52,7 +52,24 @@
  */
 /*
 -(void) ccTouchMoved: (UITouch *)touch withEvent: (UIEvent *)event {
+    
 	[self handleTouch: touch ofType: kCCTouchMoved];
+}
+ 
+-(BOOL) handleTouch: (UITouch*) touch ofType: (uint) touchType{
+    
+    
+    if (touchType == kCCTouchMoved){
+        [self.cc3Scene stopAllActions];
+                                     // getMeshNodeNamed:@"Cube"];
+      //  CC3MeshNode* rightDiceNode = [self.cc3Scene getMeshNodeNamed:@"Cube"];
+        
+      //  [leftDiceNode stopAllActions];
+        
+        NSLog(@"Let's spin now");
+    }
+    return TRUE;
+    
 }
  */
 

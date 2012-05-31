@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E436B9701575650A004760DC /* die.pod in Resources */ = {isa = PBXBuildFile; fileRef = E436B96F1575650A004760DC /* die.pod */; };
+		E436BA2715776789004760DC /* DieCube.pod in Resources */ = {isa = PBXBuildFile; fileRef = E436BA2615776789004760DC /* DieCube.pod */; };
 		E49D76BE154FAF3300AB9F79 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49D76BD154FAF3300AB9F79 /* QuartzCore.framework */; };
 		E49D76C0154FAF3300AB9F79 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49D76BF154FAF3300AB9F79 /* OpenGLES.framework */; };
 		E49D76C2154FAF3300AB9F79 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E49D76C1154FAF3300AB9F79 /* OpenAL.framework */; };
@@ -207,6 +209,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E436B96F1575650A004760DC /* die.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = die.pod; sourceTree = "<group>"; };
+		E436BA2615776789004760DC /* DieCube.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = DieCube.pod; sourceTree = "<group>"; };
 		E49D76B9154FAF3300AB9F79 /* Cocos3DTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocos3DTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49D76BD154FAF3300AB9F79 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E49D76BF154FAF3300AB9F79 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -684,6 +688,8 @@
 		E49D76CE154FAF3400AB9F79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E436BA2615776789004760DC /* DieCube.pod */,
+				E436B96F1575650A004760DC /* die.pod */,
 				E49D76CF154FAF3400AB9F79 /* Default.png */,
 				E49D76D1154FAF3400AB9F79 /* fps_images.png */,
 				E49D76D3154FAF3400AB9F79 /* Icon-72.png */,
@@ -1334,6 +1340,8 @@
 				E49D76DE154FAF3400AB9F79 /* Icon@2x.png in Resources */,
 				E49D76E1154FAF3400AB9F79 /* iTunesArtwork in Resources */,
 				E49D7932154FAF3E00AB9F79 /* hello-world.pod in Resources */,
+				E436B9701575650A004760DC /* die.pod in Resources */,
+				E436BA2715776789004760DC /* DieCube.pod in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1639,6 +1647,7 @@
 				E49D7937154FAF3E00AB9F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

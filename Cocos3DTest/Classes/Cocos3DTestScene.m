@@ -14,8 +14,11 @@
 #import "CC3Light.h"
 
 
-@implementation Cocos3DTestScene
-
+@implementation Cocos3DTestScene{
+CC3MeshNode* leftDiceNode;
+CC3MeshNode* rightDiceNode;
+    CC3Camera* cam;
+}
 -(void) dealloc {
 	[super dealloc];
 }
@@ -37,20 +40,20 @@
 -(void) initializeScene {
 
 	// Create the camera, place it back a bit, and add it to the scene
-	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, 0.0, 6.0 );
+	cam = [CC3Camera nodeWithName: @"Camera"];
+	cam.location = cc3v( 0.0, 0.0, 10.0 );
 	[self addChild: cam];
 
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( -2.0, 0.0, 0.0 );
+	lamp.location = cc3v( 0.0, 0.0, 14.0 );
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
 
 	// This is the simplest way to load a POD resource file and add the
 	// nodes to the CC3Scene, if no customized resource subclass is needed.
-	[self addContentFromPODFile: @"hello-world.pod"];
+	[self addContentFromPODFile: @"DieCube.pod"];
 	
 	// Create OpenGL ES buffers for the vertex arrays to keep things fast and efficient,
 	// and to save memory, release the vertex data in main memory because it is now redundant.
@@ -65,14 +68,14 @@
 	
 	// Displays short descriptive text for each node (including class, node name & tag).
 	// The text is displayed centered on the pivot point (origin) of the node.
-//	self.shouldDrawAllDescriptors = YES;
+	//self.shouldDrawAllDescriptors = YES;
 	
 	// Displays bounding boxes around those nodes with local content (eg- meshes).
-//	self.shouldDrawAllLocalContentWireframeBoxes = YES;
+	//self.shouldDrawAllLocalContentWireframeBoxes = YES;
 	
 	// Displays bounding boxes around all nodes. The bounding box for each node
 	// will encompass its child nodes.
-//	self.shouldDrawAllWireframeBoxes = YES;
+    //	self.shouldDrawAllWireframeBoxes = YES;
 	
 	// Moves the camera so that it will display the entire scene.
 //	[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self];
@@ -88,26 +91,13 @@
 	
 	// Fetch the 'hello, world' 3D text object that was loaded from the
 	// POD file and start it rotating
-	CC3MeshNode* helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Hello"];
-	CCActionInterval* partialRot = [CC3RotateBy actionWithDuration: 1.0
-														  rotateBy: cc3v(0.0, 30.0, 0.0)];
-	[helloTxt runAction: [CCRepeatForever actionWithAction: partialRot]];
-	
-	// To make things a bit more appealing, set up a repeating up/down cycle to
-	// change the color of the text from the original red to blue, and back again.
-	GLfloat tintTime = 8.0f;
-	ccColor3B startColor = helloTxt.color;
-	ccColor3B endColor = { 50, 0, 200 };
-	CCActionInterval* tintDown = [CCTintTo actionWithDuration: tintTime
-														  red: endColor.r
-														green: endColor.g
-														 blue: endColor.b];
-	CCActionInterval* tintUp = [CCTintTo actionWithDuration: tintTime
-														red: startColor.r
-													  green: startColor.g
-													   blue: startColor.b];
-	 CCActionInterval* tintCycle = [CCSequence actionOne: tintDown two: tintUp];
-	[helloTxt runAction: [CCRepeatForever actionWithAction: tintCycle]];
+//	leftDiceNode = (CC3MeshNode*)[self getNodeNamed: @"Cube_001"];
+   // [leftDiceNode setShouldDrawAllDescriptors:YES];
+  //  [leftDiceNode setIsTouchEnabled:YES];
+    
+	rightDiceNode = (CC3MeshNode*)[self getNodeNamed: @"Cube"];
+    [rightDiceNode setIsTouchEnabled:YES];
+    [self setIsTouchEnabled:YES];
 }
 
 
@@ -151,10 +141,10 @@
 	// Uncomment this line to have the camera move to show the entire scene.
 	// This must be done after the CC3Layer has been attached to the view,
 	// because this makes use of the camera frustum and projection.
-//	[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self];
+	//[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self];
 
 	// Uncomment this line to draw the bounding box of the scene.
-//	self.shouldDrawWireframeBox = YES;
+	//self.shouldDrawWireframeBox = YES;
 }
 
 /**
@@ -181,7 +171,40 @@
  *
  * For more info, read the notes of this method on CC3Scene.
  */
--(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {}
+-(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
+    NSLog(@"User touched and went to touchevent");
+    
+
+    // To make things a bit more appealing, set up a repeating up/down cycle to
+	// change the color of the text from the original red to blue, and back again.
+//	GLfloat tintTime = 8.0f;
+//	ccColor3B startColor = leftDiceNode.color;
+//	ccColor3B endColor = { 50, 0, 200 };
+//	CCActionInterval* tintDown = [CCTintTo actionWithDuration: tintTime
+//														  red: endColor.r
+//														green: endColor.g
+//														 blue: endColor.b];
+//	CCActionInterval* tintUp = [CCTintTo actionWithDuration: tintTime
+//														red: startColor.r
+//													  green: startColor.g
+//													   blue: startColor.b];
+//    CCActionInterval* tintCycle = [CCSequence actionOne: tintDown two: tintUp];
+
+   // CCActionInterval* partialRot = [CC3RotateToLookTowards actionWithDuration:4.0 forwardDirection:cc3v(0.0, 30.0, 0.0)];
+    
+    CCActionInterval* partialRot = [CC3RotateBy actionWithDuration: 0.2
+														  rotateBy: cc3v(0.0, 30.0, 0.0)];
+
+    
+//	[leftDiceNode runAction: [CCRepeat actionWithAction:partialRot times:6]];
+  //  [leftDiceNode runAction: [CCRepeatForever actionWithAction: tintCycle]];
+
+    [rightDiceNode runAction: [CCRepeat actionWithAction:partialRot times:6]];
+  //  [rightDiceNode runAction: [CCRepeatForever actionWithAction: tintCycle]];
+
+
+  //  [rightDiceNode stopAllActions];
+}
 
 /**
  * This callback template method is invoked automatically when a node has been picked
@@ -192,7 +215,9 @@
  *
  * For more info, read the notes of this method on CC3Scene.
  */
--(void) nodeSelected: (CC3Node*) aNode byTouchEvent: (uint) touchType at: (CGPoint) touchPoint {}
+-(void) nodeSelected: (CC3Node*) aNode byTouchEvent: (uint) touchType at: (CGPoint) touchPoint {
+    NSLog(@"User touched and went to nodeselected");
+}
 
 @end
 

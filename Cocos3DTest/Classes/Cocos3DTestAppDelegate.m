@@ -88,6 +88,7 @@
 	// Create the customized CC3Layer that supports 3D rendering,
 	// and schedule it for automatic updates
 	CC3Layer* cc3Layer = [Cocos3DTestLayer node];
+    [cc3Layer setIsTouchEnabled:YES];
 	[cc3Layer scheduleUpdate];
 	
 	// Create the customized 3D scene, attach it to the layer, and start it playing.
@@ -98,19 +99,19 @@
 	// The 3D layer can run either direcly in the scene, or it can run as a smaller "sub-window"
 	// within any standard CCLayer. So you can have a mostly 2D window, with a smaller 3D window
 	// embedded in it. To experiment with this smaller embedded 3D window, uncomment the following lines:
-//	CGSize winSize = [[CCDirector sharedDirector] winSize];
-//	cc3Layer.position = CGPointMake(30.0, 40.0);
-//	cc3Layer.contentSize = CGSizeMake(winSize.width - 70.0, winSize.width - 40.0);
-//	cc3Layer.alignContentSizeWithDeviceOrientation = YES;
-//	mainLayer = [ControllableCCLayer layerWithColor: ccc4(0, 0, 0, 255)];
-//	[mainLayer addChild: cc3Layer];
+	CGSize winSize = [[CCDirector sharedDirector] winSize];
+	cc3Layer.position = CGPointMake(30.0, 40.0);
+	cc3Layer.contentSize = CGSizeMake(winSize.width - 70.0, winSize.width - 40.0);
+	cc3Layer.alignContentSizeWithDeviceOrientation = YES;
+	mainLayer = [ControllableCCLayer layerWithColor: ccc4(0, 0, 0, 255)];
+	[mainLayer addChild: cc3Layer];
 	
 	// When it is smaller, you can even move the 3D layer around on the screen dyanmically.
 	// To see this in action, uncomment the lines above as described, and also uncomment
 	// the following two lines. The shouldAlwaysUpdateViewport property ensures that the
 	// 3D scene tracks the updated position of the 3D layer within its parent layer.
-//	cc3Layer.shouldAlwaysUpdateViewport = YES;
-//	[cc3Layer runAction: [CCMoveTo actionWithDuration: 10.0 position: ccp(100.0, 200.0)]];
+	cc3Layer.shouldAlwaysUpdateViewport = YES;
+	[cc3Layer runAction: [CCMoveTo actionWithDuration: 2.0 position: ccp(100.0, 200.0)]];
 	
 	// The controller is optional. If you want to auto-rotate the view when the device orientation
 	// changes, or if you want to display a device camera behind a combined 3D & 2D scene
